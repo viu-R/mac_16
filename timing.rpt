@@ -1,0 +1,75 @@
+
+
+*******************************************************************************
+* Report  : Timing                                                            *
+* Command : analyze_timing -delay_type max -input_pins -precision 6           *
+*         : > $rpt_dir/timing.rpt                                             *
+* Design  : mac16_dualmode                                                    *
+* Version : 2506_4e37.rel                                                     *
+* Date    : 12:20 PM, 23-Apr-26                                               *
+*******************************************************************************
+*******************************************************************************
+* MAX Timing Analysis                                                         *
+* Analysis type : bc_wc                                                       *
+* Environment Library : ics55_LLSC_H9CR_ss_rcworst_1p08_125                   *
+* Operating Conditions: ETSCA_N55_H9BR_ss_mos_RCworst_1.08_125                *
+* Wire Load Library : ics55_LLSC_H9CR_ff_cbest_1p32_125                       *
+* Wire Load Model Mode:          top                                          *
+* Wire Load Model From:          default                                      *
+* Wire Load Model On Top Design:                                              *
+*******************************************************************************
+*******************************************************************************
+* Legend :                                                                    *
+* re: rising-edge                                                             *
+* fe: falling-edge                                                            *
+* pl: positive-level                                                          *
+* nl: negative-level                                                          *
+* ': inverted clock                                                           *
+* *: delay is annotated from SDF                                              *
+* &: delay is from BBox/RC-tree                                               *
+* #: delay is set by command                                                  *
+*******************************************************************************
+
+
+*******************************************************************************
+* Report  : Critical paths for each clock group                               *
+* Design  : mac16_dualmode                                                    *
+*******************************************************************************
+
+
+Beginpoint: tx_cnt_reg[0] (re-triggered flip-flop clocked by clk)
+Endpoint: tx_shift_reg_reg[10] (re-triggered flip-flop clocked by clk)
+Path Group: clk
+Delay Type: max
+
+Point (Gate Type)                                    Inc.         Path  
+------------------------------------------------------------------------
+clock clk (re)                                   0.000000     0.000000
+clock tree delay (ideal)                         0.000000     0.000000
+tx_cnt_reg[0]/CK (DFFRQX2H9R)                    0.000000     0.000000 R
+tx_cnt_reg[0]/Q (DFFRQX2H9R)                     0.095874     0.095874 R
+u1364/B (OR2X0P5H9R)                             0.000000     0.095874 R
+u1364/Y (OR2X0P5H9R)                             0.046926     0.142801 R
+u1366/AN (NAND2BX1H9R)                           0.000000     0.142801 R
+u1366/Y (NAND2BX1H9R)                            0.352737     0.495538 R
+u1893/A (NOR2XBX1H9R)                            0.000000     0.495538 R
+u1893/Y (NOR2XBX1H9R)                            0.225126     0.720664 F
+u1946/B (NAND2X1H9R)                             0.000000     0.720664 F
+u1946/Y (NAND2X1H9R)                             0.053723     0.774387 R
+u1947/C0 (OAI211X1H9R)                           0.000000     0.774387 R
+u1947/Y (OAI211X1H9R)                            0.024626     0.799014 F
+tx_shift_reg_reg[10]/D (DFFRQX2H9R)              0.000000     0.799014 F
+data arrival time                                             0.799014
+
+clock clk (re)                                   1.000000     1.000000
+clock tree delay (ideal)                         0.000000     1.000000
+tx_shift_reg_reg[10]/CK (DFFRQX2H9R)             0.000000     1.000000 R
+clock uncertainty                               -0.050000     0.950000
+library setup time                              -0.016630     0.933370
+data required time                                            0.933370
+------------------------------------------------------------------------
+data required time                                            0.933370
+data arrival time                                            -0.799014
+------------------------------------------------------------------------
+slack (MET)                                                   0.134356
+
